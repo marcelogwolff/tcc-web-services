@@ -1,0 +1,610 @@
+<wsdl:definitions 
+	name="Pessoa" 
+	targetNamespace="http://tempuri.org/" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:i1="http://tempuri.org/bindings" 
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:tns="http://tempuri.org/" 
+	xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" 
+	xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" 
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" 
+	xmlns:wsa10="http://www.w3.org/2005/08/addressing" 
+	xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" 
+	xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" 
+	xmlns:i0="http://erp.com.br/corporativo/PessoaService" 
+	xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" 
+	xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" 
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_Pessoa_policy" 
+  	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+      <wsam:Addressing wsp:Optional="true">
+         <wsp:Policy />
+      </wsam:Addressing>
+  </wsp:Policy>
+  <wsdl:types>
+<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" 
+	targetNamespace="http://tempuri.org/" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:tns="http://tempuri.org/">
+  <xs:element name="anyType" nillable="true" type="xs:anyType"/>
+  <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+  <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+  <xs:element name="boolean" nillable="true" type="xs:boolean"/>
+  <xs:element name="byte" nillable="true" type="xs:byte"/>
+  <xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+  <xs:element name="decimal" nillable="true" type="xs:decimal"/>
+  <xs:element name="double" nillable="true" type="xs:double"/>
+  <xs:element name="float" nillable="true" type="xs:float"/>
+  <xs:element name="int" nillable="true" type="xs:int"/>
+  <xs:element name="long" nillable="true" type="xs:long"/>
+  <xs:element name="QName" nillable="true" type="xs:QName"/>
+  <xs:element name="short" nillable="true" type="xs:short"/>
+  <xs:element name="string" nillable="true" type="xs:string"/>
+  <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+  <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+  <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+  <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+  <xs:element name="char" nillable="true" type="tns:char"/>
+  <xs:simpleType name="char">
+    <xs:restriction base="xs:int"/>
+  </xs:simpleType>
+  <xs:element name="duration" nillable="true" type="tns:duration"/>
+  <xs:simpleType name="duration">
+    <xs:restriction base="xs:duration">
+      <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+      <xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+      <xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="guid" nillable="true" type="tns:guid"/>
+  <xs:simpleType name="guid">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attribute name="FactoryType" type="xs:QName"/>
+  <xs:attribute name="Id" type="xs:ID"/>
+  <xs:attribute name="Ref" type="xs:IDREF"/>
+    <xs:simpleType name="TiposPessoa">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Nenhum"/>
+      <xs:enumeration value="Fisica"/>
+      <xs:enumeration value="Juridica"/>
+      <xs:enumeration value="FisicaExterior"/>
+      <xs:enumeration value="JuridicaExterior"/>
+      <xs:enumeration value="Espolio"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TiposPessoa" nillable="true" type="tns:TiposPessoa"/>
+  <xs:simpleType name="TiposLogradouros">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Nenhum"/>
+      <xs:enumeration value="Aeroporto"/>
+      <xs:enumeration value="Alameda"/>
+      <xs:enumeration value="Area"/>
+      <xs:enumeration value="Avenida"/>
+      <xs:enumeration value="Campo"/>
+      <xs:enumeration value="Chacara"/>
+      <xs:enumeration value="Colonia"/>
+      <xs:enumeration value="Condominio"/>
+      <xs:enumeration value="Conjunto"/>
+      <xs:enumeration value="Distrito"/>
+      <xs:enumeration value="Esplanada"/>
+      <xs:enumeration value="Estacao"/>
+      <xs:enumeration value="Estrada"/>
+      <xs:enumeration value="Favela"/>
+      <xs:enumeration value="Fazenda"/>
+      <xs:enumeration value="Feira"/>
+      <xs:enumeration value="Jardim"/>
+      <xs:enumeration value="Ladeira"/>
+      <xs:enumeration value="Lago"/>
+      <xs:enumeration value="Lagoa"/>
+      <xs:enumeration value="Largo"/>
+      <xs:enumeration value="Loteamento"/>
+      <xs:enumeration value="Morro"/>
+      <xs:enumeration value="Outros"/>
+      <xs:enumeration value="Parque"/>
+      <xs:enumeration value="Passarela"/>
+      <xs:enumeration value="Patio"/>
+      <xs:enumeration value="Praca"/>
+      <xs:enumeration value="Quadra"/>
+      <xs:enumeration value="Recanto"/>
+      <xs:enumeration value="Residencial"/>
+      <xs:enumeration value="Rodovia"/>
+      <xs:enumeration value="Rua"/>
+      <xs:enumeration value="Setor"/>
+      <xs:enumeration value="Sitio"/>
+      <xs:enumeration value="Travessa"/>
+      <xs:enumeration value="Trecho"/>
+      <xs:enumeration value="Trevo"/>
+      <xs:enumeration value="Vale"/>
+      <xs:enumeration value="Vereda"/>
+      <xs:enumeration value="Via"/>
+      <xs:enumeration value="Viaduto"/>
+      <xs:enumeration value="Viela"/>
+      <xs:enumeration value="Vila"/>
+      <xs:enumeration value="Praia"/>
+      <xs:enumeration value="Nucleo"/>
+      <xs:enumeration value="Calcada"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TiposLogradouros" nillable="true" type="tns:TiposLogradouros"/>
+  <xs:element name="Integrar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="tns:IntegraPessoaRequest"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="IntegraPessoaRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Request">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Pessoa" nillable="true" type="tns:PessoaIntegracaoLayout"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IntegraPessoaRequest" nillable="true" type="tns:IntegraPessoaRequest"/>
+  <xs:complexType name="PessoaIntegracaoLayout">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LayoutIntegracaoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Abertura" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="Apelido" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="Contatos" nillable="true" type="tns:ArrayOfContatoPessoaLayout"/>
+          <xs:element minOccurs="0" name="EhCliente" nillable="true" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="EhFornecedor" nillable="true" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="Emails" nillable="true" type="tns:ArrayOfEmailPessoaLayout"/>
+          <xs:element minOccurs="0" name="Enderecos" nillable="true" type="tns:ArrayOfEnderecoPessoaLayout"/>
+          <xs:element minOccurs="0" name="InscricaoEstadual" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="InscricaoEstadualSubstituto" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="IsentoInscricaoEstadual" nillable="true" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="IsentoInscricaoSubstituto" nillable="true" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="NumeroDocumento" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="Telefones" nillable="true" type="tns:ArrayOfTelefonePessoaLayout"/>
+          <xs:element minOccurs="0" name="Tipo" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PessoaIntegracaoLayout" nillable="true" type="tns:PessoaIntegracaoLayout"/>
+  <xs:complexType name="ArrayOfContatoPessoaLayout">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ContatoPessoaLayout" nillable="true" type="tns:ContatoPessoaLayout"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContatoPessoaLayout" nillable="true" type="tns:ArrayOfContatoPessoaLayout"/>
+  <xs:complexType name="ContatoPessoaLayout">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LayoutIntegracaoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CargoCodigo" type="xs:long"/>
+          <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ContatoPessoaLayout" nillable="true" type="tns:ContatoPessoaLayout"/>
+  <xs:complexType name="ArrayOfEmailPessoaLayout">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmailPessoaLayout" nillable="true" type="tns:EmailPessoaLayout"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmailPessoaLayout" nillable="true" type="tns:ArrayOfEmailPessoaLayout"/>
+  <xs:complexType name="EmailPessoaLayout">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LayoutIntegracaoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="TipoEmail" type="tns:TiposEmail"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EmailPessoaLayout" nillable="true" type="tns:EmailPessoaLayout"/>
+  <xs:simpleType name="TiposEmail">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Cadastral"/>
+      <xs:enumeration value="NFe"/>
+      <xs:enumeration value="Cobranca"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TiposEmail" nillable="true" type="tns:TiposEmail"/>
+  <xs:complexType name="ArrayOfEnderecoPessoaLayout">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EnderecoPessoaLayout" nillable="true" type="tns:EnderecoPessoaLayout"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEnderecoPessoaLayout" nillable="true" type="tns:ArrayOfEnderecoPessoaLayout"/>
+  <xs:complexType name="EnderecoPessoaLayout">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LayoutIntegracaoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Bairro" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="CaixaPostal" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="Cep" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="CodigoIbgeMunicipio" type="xs:long"/>
+          <xs:element minOccurs="0" name="Complemento" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="Logradouro" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="NomeMunicipio" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="NumeroLogradouro" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="SiglaEstado" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="SiglaPais" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="TipoEndereco" type="tns:TiposEndereco"/>
+          <xs:element minOccurs="0" name="TipoLogradouro" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EnderecoPessoaLayout" nillable="true" type="tns:EnderecoPessoaLayout"/>
+  <xs:simpleType name="TiposEndereco">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Cadastral"/>
+      <xs:enumeration value="Cobranca"/>
+      <xs:enumeration value="Entrega"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TiposEndereco" nillable="true" type="tns:TiposEndereco"/>
+  <xs:complexType name="ArrayOfTelefonePessoaLayout">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TelefonePessoaLayout" nillable="true" type="tns:TelefonePessoaLayout"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTelefonePessoaLayout" nillable="true" type="tns:ArrayOfTelefonePessoaLayout"/>
+  <xs:complexType name="TelefonePessoaLayout">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LayoutIntegracaoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Telefone" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TelefonePessoaLayout" nillable="true" type="tns:TelefonePessoaLayout"/>
+  <xs:element name="IntegrarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IntegrarResult" nillable="true" type="tns:IntegraPessoaResponse"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="IntegraPessoaResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodigoRetorno" type="tns:CodigosRetornoIntegracao" xmlns:q8="http://erp.com.br/corporativo"/>
+          <xs:element minOccurs="0" name="Mensagem" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="TokenId" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IntegraPessoaResponse" nillable="true" type="tns:IntegraPessoaResponse"/>
+  <xs:element name="ConsultarIntegracao">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="tns:ConsultaPessoaRequest"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ConsultaPessoaRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Request">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TokenId" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ConsultaPessoaRequest" nillable="true" type="tns:ConsultaPessoaRequest"/>
+  <xs:element name="ConsultarIntegracaoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConsultarIntegracaoResult" nillable="true" type="tns:ConsultaPessoaResponse"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ConsultaPessoaResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodigoRetorno" type="tns:CodigosRetornoIntegracao" xmlns:q11="http://erp.com.br/corporativo"/>
+          <xs:element minOccurs="0" name="Mensagem" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="Pessoa" nillable="true" type="tns:PessoaIntegracaoLayout"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ConsultaPessoaResponse" nillable="true" type="tns:ConsultaPessoaResponse"/>
+  <xs:element name="Consultar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="tns:ConsultaPessoaCPFCNPJRequest"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ConsultaPessoaCPFCNPJRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Request">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CPFCNPJ" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ConsultaPessoaCPFCNPJRequest" nillable="true" type="tns:ConsultaPessoaCPFCNPJRequest"/>
+  <xs:element name="ConsultarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConsultarResult" nillable="true" type="tns:ConsultaPessoaCPFCNPJResponse"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ConsultaPessoaCPFCNPJResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Mensagem" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="Pessoas" nillable="true" type="tns:ArrayOfPessoaIntegracaoLayout"/>
+          <xs:element minOccurs="0" name="Sucesso" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ConsultaPessoaCPFCNPJResponse" nillable="true" type="tns:ConsultaPessoaCPFCNPJResponse"/>
+  <xs:complexType name="ArrayOfPessoaIntegracaoLayout">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PessoaIntegracaoLayout" nillable="true" type="tns:PessoaIntegracaoLayout"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPessoaIntegracaoLayout" nillable="true" type="tns:ArrayOfPessoaIntegracaoLayout"/>
+  <xs:element name="Login">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="tns:LoginRequest"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LoginResult" nillable="true" type="tns:LoginResponse1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Logout">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="tns:LogoutRequest1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="LoginRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="CompanyHandle" type="xs:long"/>
+      <xs:element minOccurs="0" name="BranchHandle" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+<!--   <xs:element name="LoginRequest" nillable="true" type="tns:LoginRequest"/> -->
+  <xs:complexType name="LoginResponse1">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthenticationTokenId" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SecurityServiceFault">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ServiceFault">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SecurityServiceFault" nillable="true" type="tns:SecurityServiceFault"/>
+  <xs:complexType name="ServiceFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceFault" nillable="true" type="tns:ServiceFault"/>
+  <xs:complexType name="LogoutRequest1">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthenticationTokenId" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LogoutResponse">
+          <xs:sequence>
+        <xs:element minOccurs="0" name="LogoutResult" nillable="true" type="tns:LogoutResponse"/>
+      </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LogoutResponse" nillable="true" type="tns:LogoutResponse"/>
+    <xs:complexType name="Request">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthenticationTokenId" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Request" nillable="true" type="tns:Request"/>
+  <xs:complexType name="Response">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:element name="Response" nillable="true" type="tns:Response"/>
+  <xs:complexType name="LayoutIntegracaoBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CnpjEmpresa" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="CodigoConfiguracao" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="CamposAdicionais" nillable="true" type="tns:ArrayOfCampoIntegracao"/>
+      <xs:element minOccurs="0" name="TabelasAdicionais" nillable="true" type="tns:ArrayOfTabelaAdicional"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LayoutIntegracaoBase" nillable="true" type="tns:LayoutIntegracaoBase"/>
+  <xs:complexType name="ArrayOfCampoIntegracao">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CampoIntegracao" nillable="true" type="tns:CampoIntegracao"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCampoIntegracao" nillable="true" type="tns:ArrayOfCampoIntegracao"/>
+  <xs:complexType name="CampoIntegracao">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CampoReferencia" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="Valor" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CampoIntegracao" nillable="true" type="tns:CampoIntegracao"/>
+  <xs:complexType name="ArrayOfTabelaAdicional">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TabelaAdicional" nillable="true" type="tns:TabelaAdicional"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTabelaAdicional" nillable="true" type="tns:ArrayOfTabelaAdicional"/>
+  <xs:complexType name="TabelaAdicional">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodigoConfiguracao" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="TabelaNome" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="CampoLigacao" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="CamposAdicionais" nillable="true" type="tns:ArrayOfCampoIntegracao"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TabelaAdicional" nillable="true" type="tns:TabelaAdicional"/>
+  <xs:simpleType name="CodigosRetornoIntegracao">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RecebimentoOK"/>
+      <xs:enumeration value="ProcessamentoOK"/>
+      <xs:enumeration value="FalhaDeConexao"/>
+      <xs:enumeration value="ErroRecebimento"/>
+      <xs:enumeration value="ErroProcessamento"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CodigosRetornoIntegracao" nillable="true" type="tns:CodigosRetornoIntegracao"/>
+</xs:schema>  
+  </wsdl:types>
+    <wsdl:message name="Pessoa_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login"/>
+  </wsdl:message>
+  <wsdl:message name="Pessoa_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Pessoa_Login_SecurityServiceFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:SecurityServiceFault"/>
+  </wsdl:message>
+  <wsdl:message name="Pessoa_Logout_InputMessage">
+    <wsdl:part name="parameters" element="tns:Logout"/>
+  </wsdl:message>
+  <wsdl:message name="Pessoa_Logout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogoutResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Pessoa_Logout_SecurityServiceFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:SecurityServiceFault"/>
+  </wsdl:message>
+  <wsdl:message name="Pessoa_Integrar_InputMessage">
+    <wsdl:part name="parameters" element="tns:Integrar"/>
+  </wsdl:message>
+  <wsdl:message name="Pessoa_Integrar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IntegrarResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Pessoa_ConsultarIntegracao_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarIntegracao"/>
+  </wsdl:message>
+  <wsdl:message name="Pessoa_ConsultarIntegracao_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarIntegracaoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Pessoa_Consultar_InputMessage">
+    <wsdl:part name="parameters" element="tns:Consultar"/>
+  </wsdl:message>
+  <wsdl:message name="Pessoa_Consultar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarResponse"/>
+  </wsdl:message>
+
+  <wsdl:portType name="Pessoa">
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="Login" message="tns:Pessoa_Login_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthentication/LoginResponse" message="tns:Pessoa_Login_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAuthentication/LoginSecurityServiceFaultFault" name="SecurityServiceFaultFault" message="tns:Pessoa_Login_SecurityServiceFaultFault_FaultMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input wsaw:Action="Logout" message="tns:Pessoa_Logout_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthentication/LogoutResponse" message="tns:Pessoa_Logout_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAuthentication/LogoutSecurityServiceFaultFault" name="SecurityServiceFaultFault" message="tns:Pessoa_Logout_SecurityServiceFaultFault_FaultMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="Integrar">
+      <wsdl:input wsaw:Action="http://erp.com.br/corporativo/PessoaService/Pessoa/Integrar" message="tns:Pessoa_Integrar_InputMessage"/>
+      <wsdl:output wsaw:Action="http://erp.com.br/corporativo/PessoaService/Pessoa/IntegrarResponse" message="tns:Pessoa_Integrar_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarIntegracao">
+      <wsdl:input wsaw:Action="http://erp.com.br/corporativo/PessoaService/Pessoa/ConsultarIntegracao" message="tns:Pessoa_ConsultarIntegracao_InputMessage"/>
+      <wsdl:output wsaw:Action="http://erp.com.br/corporativo/PessoaService/Pessoa/ConsultarIntegracaoResponse" message="tns:Pessoa_ConsultarIntegracao_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="Consultar">
+      <wsdl:input wsaw:Action="http://erp.com.br/corporativo/PessoaService/Pessoa/Consultar" message="tns:Pessoa_Consultar_InputMessage"/>
+      <wsdl:output wsaw:Action="http://erp.com.br/corporativo/PessoaService/Pessoa/ConsultarResponse" message="tns:Pessoa_Consultar_OutputMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="BasicHttpBinding_Pessoa" type="tns:Pessoa">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="Login" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SecurityServiceFaultFault">
+        <soap:fault name="SecurityServiceFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="Logout" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SecurityServiceFaultFault">
+        <soap:fault name="SecurityServiceFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Integrar">
+      <wsaw:UsingAddressing required="true" />
+      <wsp:PolicyReference URI="#WSHttpBinding_Pessoa_policy" />
+      <soap:operation soapAction="http://erp.com.br/corporativo/PessoaService/Pessoa/Integrar" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarIntegracao">
+      <soap:operation soapAction="http://erp.com.br/corporativo/PessoaService/Pessoa/ConsultarIntegracao" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consultar">
+      <soap:operation soapAction="http://erp.com.br/corporativo/PessoaService/Pessoa/Consultar" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Pessoa">
+    <wsdl:port name="BasicHttpBinding_Pessoa" binding="tns:BasicHttpBinding_Pessoa">
+      <soap:address location="#ENDERECO"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
